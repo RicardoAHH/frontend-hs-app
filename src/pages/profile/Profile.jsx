@@ -52,24 +52,6 @@ export default function Profile() {
 
 
     return (
-<<<<<<< HEAD
-        <div className="min-h-screen bg-gray-100">
-
-            <nav className="bg-[#023866] p-4 text-white flex items-center justify-between shadow-md">
-
-                <button
-                    onClick={handleLogout}
-                    className="bg-[#2c7ee2] hover:bg-opacity-90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
-                >
-                    Cerrar Sesión
-                </button>
-
-
-                <div className="font-bold text-xl">
-                    Panel de Usuarios
-                </div>
-            </nav>
-=======
         <>
             <div className="min-h-screen bg-gray-100">
                 {/* Navbar */}
@@ -90,7 +72,6 @@ export default function Profile() {
                     {/* Este espacio puede quedar vacío o usarse para otro elemento a la derecha si lo necesitas */}
                     <div></div>
                 </nav>
->>>>>>> cf58c828253a3e648a2e3654ac2d74b7712816ac
 
                 <main className="p-6 flex flex-col md:flex-row">
                     {/* PANEL IZQUIERDO PROFILE INFO */}
@@ -101,15 +82,15 @@ export default function Profile() {
                         }
                     </div>
                     {/* PANEL DERECHO LISTA DE BOTONES */}
-                     <div className="w-full md:w-1/3 mt-6 md:mt-0 h-auto">
-                       <ButtonLink
-                           role={profileData?.role?.name}        
-                           onUpdateProfile={handleUpdateProfile}
+                    <div className="w-full md:w-1/3 mt-6 md:mt-0 h-auto">
+                        <ButtonLink
+                            role={profileData?.role?.name}
+                            onUpdateProfile={handleUpdateProfile}
                             onListUsers={handleListUsers}
-                           onListRoles={handleListRoles}
-                           onListServices={handleListServices}
-                      />
-                   </div>
+                            onListRoles={handleListRoles}
+                            onListServices={handleListServices}
+                        />
+                    </div>
                 </main>
             </div>
 
