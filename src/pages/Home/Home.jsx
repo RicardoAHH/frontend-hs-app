@@ -18,10 +18,10 @@ function Home() {
             </nav>
 
             {/* Contenido principal */}
-            <main className="container mx-auto p-6">
+            <main className=" mx-auto p-6">
                 <h1 className="text-3xl font-bold mb-4">Bienvenido a Funval</h1>
-                <div className="overflow-hidden h-[350px] mt-10">
-                    <img className="h-[400px] object-cover " src="/banner.gif" alt="banner" />
+                <div className="overflow-hidden h-[300px] md:h-[420px] mt-10 m-auto md:w-[100%]">
+                    <img className=" h-[350px] md:h-[500px]  w-[100%] object-cover " src="/banner.gif" alt="banner" />
                 </div>
             </main>
         </div>
