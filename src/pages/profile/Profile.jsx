@@ -46,7 +46,9 @@ export default function Profile() {
 
     // Handlers para los botones del panel derecho (placeholders)
     const handleUpdateProfile = () => { };
-    const handleListUsers = () => { };
+    const handleListUsers = () => {
+        navigate('/usuarios');
+    };
     const handleListRoles = () => { };
     const handleListServices = () => { };
 
