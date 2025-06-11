@@ -8,3 +8,4 @@ export async function getUsers() {
         throw error
     }
 }
+
