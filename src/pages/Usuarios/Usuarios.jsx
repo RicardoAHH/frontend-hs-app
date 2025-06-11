@@ -33,8 +33,6 @@ export default function Usuarios() {
     }, []);
 
 
-
-
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredUsers = useMemo(() => {
@@ -84,6 +82,8 @@ export default function Usuarios() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    {/* {users.role.name === 'Admin' && ( */}
+
                     <button
                         onClick={handleAddUser}
                         className="w-full sm:w-auto px-6 py-2 bg-[#2c7ee2] hover:bg-opacity-90
@@ -93,6 +93,7 @@ export default function Usuarios() {
                     >
                         + Agregar Usuario
                     </button>
+                    {/* )} */}
                 </div>
 
                 <div className="space-y-4">
