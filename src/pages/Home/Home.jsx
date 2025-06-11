@@ -3,14 +3,14 @@ import { Link } from "react-router";
 
 function Home() {
     return (
-        <div className="bg-gray-100 h-screen">
+        <div className=" h-screen">
             {/* Navbar */}
-            <nav className="bg-blue-500 p-4 text-white flex items-center justify-between">
-                <div className="font-bold text-xl">Funval Home</div> {/* Reemplaza "Funval Home" con el nombre de tu app */}
+            <nav className=" p-2 text-white flex items-center justify-between">
+                <div className=""><img src="https://www.estudiantefunval.org/pluginfile.php/1/theme_moove/logo/1729720886/logo%202023.png" alt="Funval logo" className="w-[130px]"/></div> 
                 <div>
                     <Link
-                        to="/login" // <-- This is the path to your login page
-                        className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
+                        to="/login" 
+                        className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-1 px-4 rounded"
                     >
                         Login
                     </Link>
@@ -18,11 +18,11 @@ function Home() {
             </nav>
 
             {/* Contenido principal */}
-            <main className="container mx-auto py-6">
+            <main className="container mx-auto p-6">
                 <h1 className="text-3xl font-bold mb-4">Bienvenido a Funval</h1>
-                <p className="text-gray-700">
-                    Este es un ejemplo de página de inicio. Puedes agregar más contenido aquí.
-                </p>
+                <div className="overflow-hidden h-[350px] mt-10">
+                    <img className="h-[400px] object-cover " src="/banner.gif" alt="banner" />
+                </div>
             </main>
         </div>
     );
