@@ -1,13 +1,25 @@
 import React from 'react';
+import { useEffect } from 'react';
+
 
 export default function ProfileInfo({ profile }) {
   if (!profile) return null; // No renderizar nada si aún no hay datos
 
+  //se agrega el useEffect para guardar el id del usuario en localStorage cambio realizado por gino
+   useEffect(() => {
+    if (profile?.id) {
+      localStorage.setItem('userId', profile.id);
+    }
+  }, [profile]);
+
+//hasta aquí se agrega el useEffect para guardar el id del usuario en localStorage cambio realizado por gino
+
  const { full_name, email, student } = profile;
 
-   const country    = student?.country    ?? null;
+  const country    = student?.country    ?? null;
   const controller = student?.controller ?? null;
   const recruiter  = student?.recruiter  ?? null;
+
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto flex flex-col items-center">
