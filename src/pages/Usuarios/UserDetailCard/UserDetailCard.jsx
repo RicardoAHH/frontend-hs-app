@@ -62,7 +62,7 @@ export default function UserDetailPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100 p-6 flex flex-col justify-center items-center">
+        <div className="min-h-screen bg-[#577cbe] p-6 flex flex-col justify-center items-center">
             <button
                 onClick={handleGoBack}
                 className="mb-6 px-6 py-2 bg-[#023866] text-[#ffffff] font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-[#023866] focus:ring-opacity-75"
