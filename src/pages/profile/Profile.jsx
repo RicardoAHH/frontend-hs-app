@@ -58,21 +58,23 @@ export default function Profile() {
             <div className="min-h-screen bg-gray-100">
                 {/* Navbar */}
                 <nav className="bg-[#023866] p-4 text-white flex items-center justify-between shadow-md">
-                    {/* Botón de Logout a la izquierda */}
+
                     <button
                         onClick={handleLogout}
-                        className="bg-[#2c7ee2] hover:bg-opacity-90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
+                        className="bg-[#2c7ee2] hover:bg-opacity-90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75 ml-15"
                     >
                         Cerrar Sesión
                     </button>
 
-                    {/* Título de la página o nombre de la aplicación */}
+
                     <div className="font-bold text-xl">
                         Panel de Usuarios
                     </div>
 
-                    {/* Este espacio puede quedar vacío o usarse para otro elemento a la derecha si lo necesitas */}
-                    <div></div>
+
+                    <div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyK1XvWE2WeDczhjH9zb6FPq95eyxB3SUA-A&s" alt="funval" className="rounded-xl h-[40px] pr-15" />
+                    </div>
                 </nav>
 
                 <main className="p-6 flex flex-col md:flex-row">
