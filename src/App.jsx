@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Profile from './pages/profile/Profile';
 import Actualizar from './pages/profile/actualizar-perfil/Actualizar';
 import Usuarios from './pages/usuarios/Usuarios';
+import UserDetailCard from './pages/Usuarios/UserDetailCard/UserDetailCard';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/users/:id/edit" element={<Actualizar />} />
-        <Route path="/usuarios" element={<Usuarios />} />
+        <Route path="/users" element={<Usuarios />} />
+        <Route path="/users/:id" element={<UserDetailCard />} />
       </Routes>
     </>
   )

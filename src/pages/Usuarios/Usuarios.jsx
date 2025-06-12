@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import UserCard from '../../components/Usuarios/UserCard'; // Asegúrate de que la ruta sea correcta
+import UserCard from '../../components/Usuarios/UserCard';
 import { getUsers } from '../../libs/axios/users';
+import { useNavigate } from 'react-router';
 
 export default function Usuarios() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [filterStatus, setFilterStatus] = useState('activo');
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -17,7 +20,6 @@ export default function Usuarios() {
                 if (status === 200) {
                     setUsers(data);
                 } else {
-                    // Manejo si el status no es 200 pero no hay error en el try/catch
                     console.warn(`Petición exitosa, pero status no es 200: ${status}`);
                     setError('Ocurrió un problema al cargar los usuarios.');
                 }
@@ -36,28 +38,39 @@ export default function Usuarios() {
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredUsers = useMemo(() => {
-        if (!searchTerm) {
-            return users;
+
+        let tempUsers = users;
+        if (searchTerm) {
+            tempUsers = users.filter(user =>
+                (user.full_name && user.full_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                (user.id && user.id.toString().includes(searchTerm))
+            );
         }
-        return users.filter(user =>
-            user.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.id.toString().includes(searchTerm)
-        );
-    }, [users, searchTerm]);
+
+        if (filterStatus === 'activo') {
+            return tempUsers.filter(user => user.status === "activo");
+        } else if (filterStatus === 'inactivo') {
+            return tempUsers.filter(user => user.status === "inactivo");
+        }
+        return tempUsers;
+    }, [users, searchTerm, filterStatus]);
+
+    const handleToggleActiveInactive = () => {
+        setFilterStatus(prevStatus => prevStatus === 'activo' ? 'inactivo' : 'activo');
+    };
 
     const handleView = (id) => {
-        console.log(`Ver usuario con ID: ${id}`);
+        navigate(`/users/${id}`);
     };
 
     const handleEdit = (id) => {
-        console.log(`Editar usuario con ID: ${id}`);
+        navigate(`/users/${id}/edit`);
     };
 
     const handleDelete = (id) => {
         console.log(`Eliminar usuario con ID: ${id}`);
         if (window.confirm(`¿Estás seguro de que quieres eliminar al usuario con ID ${id}?`)) {
-            setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
         }
     };
 
@@ -92,6 +105,15 @@ export default function Usuarios() {
                                    focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
                     >
                         + Agregar Usuario
+                    </button>
+                    <button
+                        onClick={handleToggleActiveInactive}
+                        className="w-full sm:w-auto px-6 py-2 bg-[#2c7ee2] hover:bg-opacity-90
+                                   text-[#ffffff] font-semibold rounded-lg shadow-md
+                                   transition-all duration-300 ease-in-out focus:outline-none
+                                   focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
+                    >
+                        Ver usuarios con status: {filterStatus === "activo" ? "inactivo" : "activo"}
                     </button>
                     {/* )} */}
                 </div>
