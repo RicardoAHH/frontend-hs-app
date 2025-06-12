@@ -75,7 +75,7 @@ export default function Usuarios() {
     };
 
     const handleAddUser = () => {
-        console.log('Agregar nuevo usuario');
+        navigate('/users/create');
     };
 
     return (
