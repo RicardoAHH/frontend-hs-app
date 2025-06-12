@@ -13,6 +13,9 @@ export default function Login() {
             console.table({ data, status })
 
             if (status === 200) {
+                  localStorage.setItem('userId', data.id);
+                  console.log("User data from API:", data);
+
                 navigate('/profile')
             }
 
