@@ -146,6 +146,8 @@ const Actualizar = () => {
           value={formData.role ? formData.role.name : ""}
           onChange={handleChange}
           placeholder="role"
+          readOnly={formData.role_id===1? false:true}
+           
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         />
       </label>
@@ -172,6 +174,7 @@ const Actualizar = () => {
           }
           onChange={handleChange}
           placeholder="role"
+          readOnly={formData.role_id===1? false:true}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         />
       </label>
