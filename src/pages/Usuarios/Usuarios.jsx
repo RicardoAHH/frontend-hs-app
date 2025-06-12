@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import UserCard from '../../components/Usuarios/UserCard';
 import { getUsers } from '../../libs/axios/users';
 import { useNavigate } from 'react-router';
+import { deleteUser } from '../../libs/axios/delete';
 
 export default function Usuarios() {
     const [users, setUsers] = useState([]);
@@ -68,10 +69,25 @@ export default function Usuarios() {
         navigate(`/users/${id}/edit`);
     };
 
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         console.log(`Eliminar usuario con ID: ${id}`);
         if (window.confirm(`¿Estás seguro de que quieres eliminar al usuario con ID ${id}?`)) {
         }
+        try {
+            const { status } = await deleteUser(id);
+            if (status === 200) {
+                console.log(status)
+                alert('Usuario eliminado correctamente.');
+            } else {
+                console.warn(`Petición exitosa, pero status no es 200: ${status}`);
+                alert('Ocurrió un problema al eliminar el usuario.');
+            }
+        } catch (error) {
+            console.error("Error al eliminar usuario:", error);
+            alert('No se pudo eliminar el usuario. Verifica tu conexión o permisos.');
+        }
+        // Actualizar la pagina para reflejar el cambio
+        window.location.reload();
     };
 
     const handleAddUser = () => {
