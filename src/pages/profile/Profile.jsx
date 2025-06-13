@@ -58,7 +58,7 @@ export default function Profile({ profileData: initialProfile }) {
             }}>
                 {/* Navbar */}
 
-                <nav className="bg-[#023866] p-2 text-white flex flex-wrap items-center justify-center md:justify-between gap-3 shadow-md">
+                <nav className="bg-[#023866] p-4 text-white flex flex-wrap items-center justify-center md:justify-between gap-3 shadow-md">
                     {/* Botón de Logout a la izquierda */}
 
                     <button
@@ -75,7 +75,7 @@ export default function Profile({ profileData: initialProfile }) {
                     </div>
                 </nav>
 
-                <main className="p-6 flex flex-col md:flex-row m-auto max-w-[900px] gap-5 md:mt-20">
+                <main className="p-6 flex flex-col md:flex-row m-auto max-w-[900px] gap-15 md:mt-20">
                     {/* PANEL IZQUIERDO PROFILE INFO */}
                     <div className="w-full md:w-1/2">
                         {profileData
