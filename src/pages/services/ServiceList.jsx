@@ -61,7 +61,7 @@ export default function ServiceList({ role }) {
                         {/* botón para ver evidencias */}
                         <button
                             onClick={() => handleView(svc.id)}
-                            className="bg-[#2c7ee2] text-white px-3 py-1 rounded hover:bg-opacity-90"
+                            className="bg-[#2c7ee2] text-white px-3 py-1 rounded hover:bg-blue-400 cursor-pointer"
                         >
                             Ver Evidencia
                         </button>

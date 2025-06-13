@@ -16,7 +16,7 @@ export default function ButtonLink({
   const userId = localStorage.getItem('userId');
 
   const btnClass =
-    'w-full text-center bg-[#2c7ee2] hover:bg-[#023866] text-white font-semibold py-2 px-4 rounded-lg mb-2 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75';
+    'w-full text-center cursor-pointer bg-[#2c7ee2] hover:bg-[#023866] text-white font-semibold py-2 px-4 rounded-lg mb-2 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75';
 
   return (
     <div className="space-y-2 p-4">

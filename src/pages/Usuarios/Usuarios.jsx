@@ -3,6 +3,7 @@ import UserCard from '../../components/Usuarios/UserCard';
 import { getUsers } from '../../libs/axios/users';
 import { useNavigate } from 'react-router';
 import { deleteUser } from '../../libs/axios/delete';
+import GlobalNav from '../../components/GlobalNav';
 
 export default function Usuarios() {
     const [users, setUsers] = useState([]);
@@ -94,24 +95,19 @@ export default function Usuarios() {
         navigate('/users/create');
     };
 
-    const handleGoBack = () => {
-        navigate('/profile');
-    };
+    
 
     return (
+        <>
+        <GlobalNav/>
         <div className="min-h-screen bg-[#023866] p-6">
             <div className="max-w-6xl mx-auto bg-[#ffffff] rounded-lg shadow-xl p-8">
-                <button
-                    onClick={handleGoBack}
-                    className="mb-6 px-6 py-2 bg-[#023866] text-[#ffffff] font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-[#023866] focus:ring-opacity-75"
-                >
-                    &larr; Regresar a Perfil
-                </button>
+               
                 <div className='flex w-[100%] gap-5 justify-center'>
                     <h1 className="text-3xl font-bold text-[#023866] mb-8 text-center">
                         Gestión de Usuarios
                     </h1>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyK1XvWE2WeDczhjH9zb6FPq95eyxB3SUA-A&s" alt="funval" className="rounded-xl h-[40px]" />
+
                 </div>
                 <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <input
@@ -166,5 +162,6 @@ export default function Usuarios() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

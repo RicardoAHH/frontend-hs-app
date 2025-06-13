@@ -10,7 +10,7 @@ function Home() {
                 <div>
                     <Link
                         to="/login" 
-                        className=" mr-5 bg-blue-500 hover:bg-blue-900 text-white font-bold py-1 px-4 md:py-3  md:px-8 rounded "
+                        className=" mr-5 bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-4 md:py-3  md:px-8 rounded "
                     >
                         Login
                     </Link>

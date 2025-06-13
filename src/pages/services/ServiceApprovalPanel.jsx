@@ -79,7 +79,7 @@ export default function ServiceApprovalPanel() {
               {/* Link a evidencias */}
               <button
                 onClick={() => navigate(`/services/evidence/${req.id}`)}
-                className="text-[#2c7ee2] underline"
+                className="text-[#2c7ee2] underline cursor-pointer"
               >
                 Ver evidencia
               </button>
@@ -89,13 +89,13 @@ export default function ServiceApprovalPanel() {
             <div className="mt-4 md:mt-0 flex space-x-2">
               <button
                 onClick={() => handleDecision(req.id, 'approve')}
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+                className="bg-green-500 cursor-pointer hover:bg-green-600 text-white px-4 py-2 rounded"
               >
                 Aprobar
               </button>
               <button
                 onClick={() => handleDecision(req.id, 'reject')}
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                className="bg-red-500 cursor-pointer hover:bg-red-600 text-white px-4 py-2 rounded"
               >
                 Rechazar
               </button>

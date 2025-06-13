@@ -79,7 +79,7 @@ export default function Login() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-[#023866] hover:bg-[#2c7ee2] hover:bg-opacity-90 text-[#ffffff] font-semibold py-3 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
+                        className="w-full bg-[#023866] hover:bg-[#2c7ee2] cursor-pointer hover:bg-opacity-90 text-[#ffffff] font-semibold py-3 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
                     >
                         Iniciar Sesión
                     </button>

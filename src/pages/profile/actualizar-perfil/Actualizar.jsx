@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { updateUser, getUser } from "../../../libs/axios/update";
 import { useNavigate } from 'react-router';
+import GlobalNav from "../../../components/GlobalNav";
 
 const Actualizar = () => {
   const navigate = useNavigate();
@@ -81,13 +82,9 @@ const Actualizar = () => {
   };
 
   return (
-    <div className="bg-[#023866]">
-      <button
-        onClick={handleGoBack}
-        className="mt-6 mb-2 ml-[45%] px-6 py-4 bg-[#577cbe] text-[#ffffff] font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-[#023866] focus:ring-opacity-75"
-      >
-        &larr; Regresar a Perfil
-      </button>
+    <>
+    <GlobalNav/>
+    <div className="bg-[#023866] pt-10">
       <form
         onSubmit={handleSubmit}
         className="max-w-xl mx-auto p-6 bg-white rounded-md shadow-md pt-10"
@@ -194,7 +191,7 @@ const Actualizar = () => {
 
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition-colors"
+          className="w-full py-2 px-4 bg-[#023866] hover:bg-[#2c7ee2] text-white font-semibold rounded-md  transition-colors"
         >
           Actualizar Usuario
         </button>
@@ -202,6 +199,7 @@ const Actualizar = () => {
         {message && <p className="mt-4 text-center text-red-600">{message}</p>}
       </form>
     </div>
+    </>
 
   );
 };

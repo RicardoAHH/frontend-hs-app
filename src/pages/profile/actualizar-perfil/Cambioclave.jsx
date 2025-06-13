@@ -1,3 +1,4 @@
+import GlobalNav from "../../../components/GlobalNav";
 import { cambioContraseña } from "../../../libs/axios/contraseña";
 import { useState } from "react";
 
@@ -47,6 +48,8 @@ export default function Cambioclave() {
   };
 
   return (
+    <>
+    <GlobalNav/>
     <div className="flex flex-col gap-5 justify-center pt-10 items-center">
       <h2 className="text-2xl font-semibold">Cambiar contraseña</h2>
       <form onSubmit={handleSubmit} className="w-[80%] md:w-[50%] space-y-4">
@@ -80,5 +83,6 @@ export default function Cambioclave() {
       {error && <p className="mt-4 text-red-600 text-center">{error}</p>}
       {message && <p className="mt-4 text-green-600 text-center">{message}</p>}
     </div>
+    </>
   );
 }
