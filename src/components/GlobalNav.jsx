@@ -27,7 +27,9 @@ export default function GlobalNav() {
         navigate('/profile');
     };
     return (
+
         <nav className="bg-[#023866] p-2 text-white flex flex-wrap items-center justify-center md:justify-between gap-3 shadow-md">
+
 
             <button
                 onClick={handleGoBack}

@@ -15,13 +15,13 @@ export default function ServiceActionMenu({
     'w-full text-center hover:bg-blue-400 cursor-pointer bg-[#2c7ee2] hover:bg-opacity-90 text-white font-semibold py-2 px-4 rounded-lg mb-2 transition-all duration-300 ease-in-out';
 
   return (
-    <div className="space-y-2 p-4 bg-white rounded shadow max-w-xs mx-auto ">
+    <div className="items-center justify-center space-y-2 p-6 bg-white rounded shadow max-w-xs mx-auto h-35 ">
       {/* Para STUDENT: siempre puede reportar y listar sus propias horas */}
       {isStudent && (
         <>
           <button onClick={onReport}   className={btnClass}>Reportar horas</button>
           <button onClick={onList}     className={btnClass}>Mis horas</button>
-          <button onClick={onEvidence} className={btnClass}>Ver mis evidencias</button>
+          {/* <button onClick={onEvidence} className={btnClass}>Ver mis evidencias</button> */}
         </>
       )}
 
@@ -29,7 +29,7 @@ export default function ServiceActionMenu({
       {isAdmin && (
         <>
           <button onClick={onList}     className={btnClass}>Listar todas las horas</button>
-          <button onClick={onEvidence} className={btnClass}>Ver evidencias</button>
+          {/* <button onClick={onEvidence} className={btnClass}>Ver evidencias</button> */}
           <button onClick={onApproval} className={btnClass}>Aprobar / Rechazar</button>
         </>
       )}
