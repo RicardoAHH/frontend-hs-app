@@ -5,6 +5,7 @@ import ReportServiceForm from './ReportServiceForm';
 import ServiceList from './ServiceList';
 import ServiceEvidenceViewer from './ServiceEvidenceViewer';
 import ServiceApprovalPanel from './ServiceApprovalPanel';
+import GlobalNav from '../../components/GlobalNav';
 
 export default function ServicesPage({ profileData }) {
     const navigate = useNavigate();
@@ -21,6 +22,8 @@ export default function ServicesPage({ profileData }) {
     const handleEvidence = () => navigate('evidence/${id}');
     const handleApproval = () => navigate('approval');
     return (
+        <>
+        <GlobalNav/>
         <div className="flex flex-col item-center justify-center aling md:flex-row md:items-start gap-4 flex-1 min-h-screen p-6 bg-cover bg-center" style={{
                 backgroundImage: "url('/fondo.jpg')"
             }}>
@@ -62,5 +65,6 @@ export default function ServicesPage({ profileData }) {
                 </Routes>
             </div>
         </div>
+        </>
     );
 }

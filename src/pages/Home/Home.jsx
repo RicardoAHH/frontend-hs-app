@@ -9,8 +9,10 @@ function Home() {
                 <div className=""><img src="https://www.estudiantefunval.org/pluginfile.php/1/theme_moove/logo/1729720886/logo%202023.png" alt="Funval logo" className="w-[130px] md:w-[200px] mt-2" /></div>
                 <div>
                     <Link
+
                         to="/login"
-                        className=" mr-5 bg-blue-500 hover:bg-blue-900 text-white font-bold py-1 px-4 md:py-3  md:px-8 rounded "
+                        className=" mr-5 bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-4 md:py-3  md:px-8 rounded "
+
                     >
                         Login
                     </Link>

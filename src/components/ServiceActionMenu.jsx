@@ -12,7 +12,7 @@ export default function ServiceActionMenu({
 
   // Clase común para los botones
   const btnClass =
-    'w-full text-center bg-[#2c7ee2] hover:bg-opacity-90 text-white font-semibold py-2 px-4 rounded-lg mb-2 transition-all duration-300 ease-in-out';
+    'w-full text-center hover:bg-blue-400 cursor-pointer bg-[#2c7ee2] hover:bg-opacity-90 text-white font-semibold py-2 px-4 rounded-lg mb-2 transition-all duration-300 ease-in-out';
 
   return (
     <div className="space-y-2 p-4 bg-white rounded shadow max-w-xs mx-auto ">
