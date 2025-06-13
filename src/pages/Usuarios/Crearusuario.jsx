@@ -1,3 +1,4 @@
+import GlobalNav from "../../components/GlobalNav";
 import { createUsers } from "../../libs/axios/createUser";
 import { useState, useEffect } from "react";
 
@@ -87,6 +88,8 @@ const Crearusuario = () => {
   };
 
   return (
+    <>
+    <GlobalNav/>
     <div className="max-w-xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Crear Usuario</h1>
        {message && <p className="mt-4 text-green-600 font-medium">{message}</p>}
@@ -260,6 +263,7 @@ const Crearusuario = () => {
       </form>
      
     </div>
+    </>
   );
 };
 
