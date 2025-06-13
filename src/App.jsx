@@ -8,6 +8,10 @@ import Usuarios from './pages/usuarios/Usuarios';
 import ServicesPage from './pages/services/ServicesPage';
 import { profile } from './libs/axios/profile';
 import { useNavigate } from 'react-router-dom'; 
+import UserDetailCard from './pages/Usuarios/UserDetailCard/UserDetailCard';
+import Crearusuario from './pages/Usuarios/Crearusuario';
+import Cambioclave from './pages/profile/actualizar-perfil/Cambioclave';
+
 
 
 function App() {
@@ -46,8 +50,12 @@ function App() {
           }
         />
         <Route path="/users/:id/edit" element={<Actualizar />} />
-        <Route path="/usuarios" element={<Usuarios />} />
+
         <Route path="/services/*" element={<ServicesPage profileData={profileData} />} />
+        <Route path="/users" element={<Usuarios />} />
+        <Route path="/users/:id" element={<UserDetailCard />} />
+        <Route path='/users/create' element={<Crearusuario />} />
+        <Route path='/users/cambiar-contraseña' element={<Cambioclave />} />
 
       </Routes>
     </>

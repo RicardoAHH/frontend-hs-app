@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { updateUser, getUser } from "../../../libs/axios/update";
+import { useNavigate } from 'react-router';
 
 const Actualizar = () => {
+  const navigate = useNavigate();
   const { id } = useParams(); // Obtén el id de los parámetros de la ruta
   const [formData, setFormData] = useState({
     f_name: "",
@@ -74,122 +76,137 @@ const Actualizar = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigate('/profile');
+  };
+
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-xl mx-auto p-6 bg-white rounded-md shadow-md pt-10"
-    >
-      <h2 className="text-2xl font-semibold mb-6 text-center">
-        Actualizar Usuario
-      </h2>
-
-      <label className="block mb-4">
-        <span className="text-gray-700">Primer Nombre:</span>
-        <input
-          name="f_name"
-          value={formData.f_name}
-          onChange={handleChange}
-          placeholder="First Name"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-
-      <label className="block mb-4">
-        <span className="text-gray-700">Segundo Nombre:</span>
-        <input
-          name="m_name"
-          value={formData.m_name}
-          onChange={handleChange}
-          placeholder="Second Name"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-
-      <label className="block mb-4">
-        <span className="text-gray-700">Primer Apellido:</span>
-        <input
-          name="f_lastname"
-          value={formData.f_lastname}
-          onChange={handleChange}
-          placeholder="First Lastname"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-
-      <label className="block mb-4">
-        <span className="text-gray-700">Segundo Apellido:</span>
-        <input
-          name="s_lastname"
-          value={formData.s_lastname}
-          onChange={handleChange}
-          placeholder="Second Lastname"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-
-      <label className="block mb-4">
-        <span className="text-gray-700">Email:</span>
-        <input
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-      <label className="block mb-4">
-        <span className="text-gray-700">Role:</span>
-        <input
-          name="role"
-          type="text"
-          value={formData.role ? formData.role.name : ""}
-          onChange={handleChange}
-          placeholder="role"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-      <label className="block mb-4">
-        <span className="text-gray-700">Telefono:</span>
-        <input
-          name="phone"
-          type="text"
-          value={formData.phone || ""}
-          onChange={handleChange}
-          placeholder="Telefono"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        ></input>
-      </label>
-      <label className="block mb-4">
-        <span className="text-gray-700">Escuela:</span>
-        <input
-          name="escuela"
-          type="text"
-          value={
-            formData.schools
-              ? formData.schools.map((school) => school.name).join(", ")
-              : ""
-          }
-          onChange={handleChange}
-          placeholder="role"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
-
+    <div className="bg-[#023866]">
       <button
-        type="submit"
-        className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition-colors"
+        onClick={handleGoBack}
+        className="mt-6 mb-2 ml-[45%] px-6 py-4 bg-[#577cbe] text-[#ffffff] font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-[#023866] focus:ring-opacity-75"
       >
-        Actualizar Usuario
+        &larr; Regresar a Perfil
       </button>
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-xl mx-auto p-6 bg-white rounded-md shadow-md pt-10"
+      >
+        <h2 className="text-2xl font-semibold mb-6 text-center">
+          Actualizar Usuario
+        </h2>
 
-      {message && <p className="mt-4 text-center text-red-600">{message}</p>}
-    </form>
+        <label className="block mb-4">
+          <span className="text-gray-700">Primer Nombre:</span>
+          <input
+            name="f_name"
+            value={formData.f_name}
+            onChange={handleChange}
+            placeholder="First Name"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="text-gray-700">Segundo Nombre:</span>
+          <input
+            name="m_name"
+            value={formData.m_name}
+            onChange={handleChange}
+            placeholder="Second Name"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="text-gray-700">Primer Apellido:</span>
+          <input
+            name="f_lastname"
+            value={formData.f_lastname}
+            onChange={handleChange}
+            placeholder="First Lastname"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="text-gray-700">Segundo Apellido:</span>
+          <input
+            name="s_lastname"
+            value={formData.s_lastname}
+            onChange={handleChange}
+            placeholder="Second Lastname"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="text-gray-700">Email:</span>
+          <input
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+        <label className="block mb-4">
+          <span className="text-gray-700">Role:</span>
+          <input
+            name="role"
+            type="text"
+            value={formData.role ? formData.role.name : ""}
+            onChange={handleChange}
+            placeholder="role"
+            readOnly={formData.role_id === 1 ? false : true}
+
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+        <label className="block mb-4">
+          <span className="text-gray-700">Telefono:</span>
+          <input
+            name="phone"
+            type="text"
+            value={formData.phone || ""}
+            onChange={handleChange}
+            placeholder="Telefono"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          ></input>
+        </label>
+        <label className="block mb-4">
+          <span className="text-gray-700">Escuela:</span>
+          <input
+            name="escuela"
+            type="text"
+            value={
+              formData.schools
+                ? formData.schools.map((school) => school.name).join(", ")
+                : ""
+            }
+            onChange={handleChange}
+            placeholder="role"
+            readOnly={formData.role_id === 1 ? false : true}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+        </label>
+
+        <button
+          type="submit"
+          className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition-colors"
+        >
+          Actualizar Usuario
+        </button>
+
+        {message && <p className="mt-4 text-center text-red-600">{message}</p>}
+      </form>
+    </div>
+
   );
 };
 
 export default Actualizar;
-
 // {
 //     "id": 32,
 //     "f_name": "Fleur Wilkins",

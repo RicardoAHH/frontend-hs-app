@@ -8,3 +8,15 @@ export async function getUsers() {
     }
 }
 
+
+
+export async function getUserInfo(userId) {
+    try {
+        const { data, status } = await instance.get(`api/v1/users/${userId}`)
+        return { data, status }
+    } catch (error) {
+        throw error
+    }
+}
+
+

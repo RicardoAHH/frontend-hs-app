@@ -21,22 +21,22 @@ export default function UserCard({ user, onView, onEdit, onDelete }) {
                 >
                     Ver
                 </button>
-                <button
+                {user.status === "activo" ? <button
                     onClick={() => onEdit(user.id)}
                     className="px-4 py-2 text-sm bg-[#2c7ee2] text-[#ffffff] rounded-md
                                hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#2c7ee2]
                                transition-colors"
                 >
                     Editar
-                </button>
-                <button
+                </button> : ""}
+                {user.status === "activo" ? <button
                     onClick={() => onDelete(user.id)}
                     className="px-4 py-2 text-sm bg-red-500 text-[#ffffff] rounded-md
                                hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400
                                transition-colors"
                 >
                     Eliminar
-                </button>
+                </button> : ""}
             </div>
         </div>
     );

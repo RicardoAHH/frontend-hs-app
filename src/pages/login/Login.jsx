@@ -20,6 +20,10 @@ export default function Login() {
                     navigate('/profile', { state: { profile: me } });
                     return;
                 }
+                  localStorage.setItem('userId', data.id);
+                  console.log("User data from API:", data);
+
+                navigate('/profile')
             }
 
         } catch (error) {
