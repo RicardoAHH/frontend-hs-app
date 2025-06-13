@@ -1,7 +1,6 @@
 // src/components/ButtonLink.jsx
 import React from 'react';
 import { useNavigate } from 'react-router'; // ← corregido 'react-router' → 'react-router-dom'
-
 export default function ButtonLink({
   role,
   onListUsers,
@@ -10,6 +9,8 @@ export default function ButtonLink({
 }) {
   const navigate = useNavigate();
   const isAdmin = role === 'Admin';
+
+
 
   // Obtenemos el ID del usuario desde localStorage cambio realizado por gino
   const userId = localStorage.getItem('userId');
@@ -24,6 +25,10 @@ export default function ButtonLink({
         className={btnClass} 
       >
         Actualizar perfil
+      </button>
+
+      <button onClick={() => navigate(`/users/cambiar-contraseña`)}  className={btnClass}>
+        Cambiar contraseña
       </button>
 
       {isAdmin && (
