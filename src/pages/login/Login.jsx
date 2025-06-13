@@ -1,5 +1,7 @@
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../libs/axios/auth';
+import { profile } from "../../libs/axios/profile";
+
 
 
 export default function Login() {
@@ -13,6 +15,14 @@ export default function Login() {
             console.table({ data, status })
 
             if (status === 200) {
+                const { data: me, status: s2 } = await profile();
+                if (s2 === 200) {
+                    navigate('/profile', { state: { profile: me } });
+                    return;
+                }
+                  localStorage.setItem('userId', data.id);
+                  console.log("User data from API:", data);
+
                 navigate('/profile')
             }
 
@@ -22,8 +32,10 @@ export default function Login() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#023866] p-4">
-            <div className="w-full max-w-md bg-[#ffffff] rounded-lg shadow-xl p-8 sm:p-10">
+        <div className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center" style={{
+            backgroundImage: "url('/Cal.gif')"
+        }}>
+            <div className="w-full max-w-md bg-gradient-to-b from-white/100 to-white/50  rounded-lg shadow-xl p-8 sm:p-10">
                 {/* Espacio para el Logo de Funval */}
                 <div className="flex justify-center mb-8">
                     {/* Puedes reemplazar este div con una etiqueta <img> si tienes el logo en un archivo.
@@ -40,11 +52,11 @@ export default function Login() {
 
                 <form onSubmit={handleLogin}>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="email">
+                        <label className="block text-gray-600 text-sm font-medium mb-2" htmlFor="email">
                             Correo electrónico
                         </label>
                         <input
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] bg-white text-gray-900 placeholder-gray-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] bg-white/15 text-gray-500 placeholder-gray-500"
                             type="email"
                             name='email'
                             id="email"
@@ -53,11 +65,11 @@ export default function Login() {
                         />
                     </div>
                     <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="password">
+                        <label className="block text-gray-600 text-sm font-medium mb-2" htmlFor="password">
                             Contraseña
                         </label>
                         <input
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] bg-white text-gray-900 placeholder-gray-400"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] bg-white/15 text-gray-500 placeholder-gray-500"
                             type="password"
                             id="password"
                             name='password'
@@ -67,7 +79,7 @@ export default function Login() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-[#2c7ee2] hover:bg-opacity-90 text-[#ffffff] font-semibold py-3 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
+                        className="w-full bg-[#2c7ee2] hover:bg-[#023866]  cursor-pointer hover:bg-opacity-90 text-[#ffffff] font-semibold py-3 px-4 rounded-lg transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2c7ee2] focus:ring-opacity-75"
                     >
                         Iniciar Sesión
                     </button>
@@ -75,7 +87,7 @@ export default function Login() {
 
                 <p className="mt-6 text-center text-gray-600 text-sm">
                     ¿No tienes una cuenta? {' '}
-                    <a href="#" className="text-[#2c7ee2] hover:underline font-medium">
+                    <a href="#" className="text-[#023866]  hover:underline   font-medium">
                         Regístrate aquí
                     </a>
                 </p>
