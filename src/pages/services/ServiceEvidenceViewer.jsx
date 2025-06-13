@@ -1,46 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';  // ① para leer el parámetro :id y navegar
-import instance from '../../libs/axios';                    // ② tu cliente axios con baseURL 'https://.../crelape.com/'
+import { useParams, useNavigate } from 'react-router-dom';  
+import instance from '../../libs/axios';                    
 
 export default function ServiceEvidenceViewer() {
-  const { id } = useParams();    // ③ extraemos el id de la URL (/services/evidence/:id)
+  const { id } = useParams();    
   const navigate = useNavigate(); 
   const [evidenceUrl, setEvidenceUrl] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchService = async () => {
+    const fetchEvidence = async () => {
       try {
         setLoading(true);
-        // ④ traemos el detalle del servicio concreto
-        const { data, status } = await instance.get(`api/v1/services/${id}`);
-        if (status === 200) {
-          // ⑤ tu API devuelve data.evidence como URL string
-          setEvidenceUrl(data.evidence);
-        } else {
-          setError(`Error inesperado: status ${status}`);
-        }
+        
+        const url = `${instance.defaults.baseURL}api/v1/evidence/${id}`;
+        setEvidenceUrl(url);
       } catch (err) {
+        console.error('[Evidence] Error al construir URL →', err);
         setError('No se pudo cargar la evidencia.');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchService();
+    fetchEvidence();
   }, [id]);
 
-  // ⑥ Renderizado según estado
+  
+  const handleOpenEvidence = async (e) => {      
+   e.preventDefault();
+   try {
+    
+     const { status } = await instance.head(`api/v1/evidence/${id}`);
+     if (status === 200) {
+       window.open(evidenceUrl, '_blank', 'noopener');  
+     } else {
+       alert('Lo sentimos, no hay evidencia disponible para este servicio.'); 
+     }
+   } catch (err) {
+     
+     const code = err.response?.status;
+     if (code === 404) {
+       alert('No se encontró la evidencia para este servicio.');
+     } else {
+       alert('No tienes permiso para ver esta evidencia o ocurrió un error.');
+     }
+   }
+ };
+
   if (loading) return <p className="p-6">Cargando evidencia…</p>;
   if (error)   return <p className="p-6 text-red-600">{error}</p>;
 
   return (
     <div className="p-6 max-w-3xl mx-auto bg-white rounded shadow">
-      <h2 className="text-xl font-semibold mb-4">Evidencia del Servicio #{id}</h2>
+      <h2 className="text-xl font-semibold mb-4">Evidencia del Servicio </h2>
 
       {evidenceUrl ? (
-        // ⑦ si es imagen la mostramos, si no ofrecemos descargar
+        
         evidenceUrl.match(/\.(jpeg|jpg|png|gif)$/i) ? (
           <img
             src={evidenceUrl}
@@ -48,20 +65,19 @@ export default function ServiceEvidenceViewer() {
             className="w-full h-auto rounded"
           />
         ) : (
-          <a
-            href={evidenceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline"
+         
+          <button
+            onClick={handleOpenEvidence}
+            className="text-blue-600 underline bg-transparent p-0 border-0 cursor-pointer"
           >
             Abrir evidencia (PDF/otro)
-          </a>
+          </button>
         )
       ) : (
         <p className="text-gray-600">No hay evidencia asociada.</p>
       )}
 
-      {/* ⑧ botón para volver al listado */}
+      {/* botón para volver al listado */}
       <button
         onClick={() => navigate('/services/list')}
         className="mt-6 mx-4 bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400 cursor-pointer"
