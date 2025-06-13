@@ -1,35 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { logout } from "../../libs/axios/auth";
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { profile } from "../../libs/axios/profile";
-import { getUsers } from "../../libs/axios/users";
 import ProfileInfo from '../../components/ProfileInfo';
 import ButtonLink from '../../components/ButtonLink';
 
-export default function Profile() {
+export default function Profile({ profileData: initialProfile }) {
     const navigate = useNavigate();
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [profileData, setProfileData] = useState(null);
-
-    useEffect(() => {
-        const fetchProfile = async () => {
-            try {
-                const { data, status } = await profile();
-                if (status === 200) {
-                    setProfileData(data);
-                } else {
-                    console.warn(`Perfil cargado, pero status no es 200: ${status}`);
-                }
-            } catch (err) {
-                console.error('Error al obtener perfil:', err);
-            }
-        };
-        fetchProfile();
-    }, []);
-
-
+    /* necesitamos este estado local para poder acceder a los datos del usuario q inicia sesion */
+    const [profileData, setProfileData] = useState(initialProfile);
+    /* Efecto para fetchear el perfil al cargar /profile ,así se garantiza que tras
+     login o recarga de página obtienes los datos correctos.*/
+      useEffect(() => {
+    if (!initialProfile) {               
+      (async () => {
+        try {
+          const { data, status } = await profile();
+          if (status === 200) setProfileData(data);
+        } catch (err) {
+          console.error('Error al obtener perfil en Profile.jsx:', err);
+        }
+      })();
+    }
+  }, [initialProfile]);
+    
+    // Handlers para los botones 
     const handleLogout = async () => {
         try {
             const { status } = await logout();
@@ -43,21 +38,22 @@ export default function Profile() {
             alert('Hubo un problema al cerrar la sesión.'); // Muestra un mensaje al usuario
         }
     };
-
-    // Handlers para los botones del panel derecho (placeholders)
+    //place hoilders button
     const handleUpdateProfile = () => { };
-    const handleListUsers = () => {
-        navigate('/usuarios');
-    };
-    const handleListRoles = () => { };
-    const handleListServices = () => { };
+    const handleListUsers = () => { navigate('/usuarios'); };
+    const handleListRoles = () => { navigate('/roles'); };
+    const handleListServices = () => { navigate('/services'); };
+
+    if (!profileData) return <p className="p-6">Cargando perfil…</p>;
 
 
     return (
         <>
-            <div className="min-h-screen bg-gray-100">
+            <div className="min-h-screen bg-gray-100 bg-cover bg-center" style={{
+                backgroundImage: "url('/fondo.jpg')"
+            }}>
                 {/* Navbar */}
-                <nav className="bg-[#023866] p-4 text-white flex items-center justify-between shadow-md">
+                <nav className="bg-[#023866] p-2 text-white flex items-center justify-between shadow-md">
                     {/* Botón de Logout a la izquierda */}
                     <button
                         onClick={handleLogout}
@@ -75,16 +71,16 @@ export default function Profile() {
                     <div></div>
                 </nav>
 
-                <main className="p-6 flex flex-col md:flex-row">
+                <main className="p-6 flex flex-col md:flex-row m-auto max-w-[900px] gap-5 md:mt-20">
                     {/* PANEL IZQUIERDO PROFILE INFO */}
-                    <div className="w-full md:w-2/3">
+                    <div className="w-full md:w-1/2">
                         {profileData
                             ? <ProfileInfo profile={profileData} />
                             : <p>Cargando perfil…</p>
                         }
                     </div>
                     {/* PANEL DERECHO LISTA DE BOTONES */}
-                    <div className="w-full md:w-1/3 mt-6 md:mt-0 h-auto">
+                    <div className="w-full md:w-1/2 mt-6 md:mt-0 h-auto">
                         <ButtonLink
                             role={profileData?.role?.name}
                             onUpdateProfile={handleUpdateProfile}

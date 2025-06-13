@@ -11,7 +11,7 @@ instance.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
 
-    if (error.status === 401 && window.location.pathname !== '/login') {
+    if (error.response?.status === 401 && window.location.pathname !== '/login') {
         window.location.href = '/#/login';
     }
 
