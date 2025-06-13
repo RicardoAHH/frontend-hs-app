@@ -4,7 +4,7 @@ import Login from './pages/login/Login';
 import Home from "./pages/Home/Home";
 import Profile from './pages/profile/Profile';
 import Actualizar from './pages/profile/actualizar-perfil/Actualizar';
-import Usuarios from './pages/usuarios/Usuarios';
+import Usuarios from './pages/Usuarios/Usuarios';
 import ServicesPage from './pages/services/ServicesPage';
 import { profile } from './libs/axios/profile';
 import { useNavigate } from 'react-router-dom'; 
