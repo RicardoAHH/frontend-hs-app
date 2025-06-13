@@ -36,11 +36,6 @@ export default function ButtonLink({
           Listar usuarios
         </button>
       )}
-
-      <button onClick={onListRoles} className={btnClass}>
-        Listar roles
-      </button>
-
       <button onClick={onListServices} className={btnClass}>
         Listar servicios
       </button>
