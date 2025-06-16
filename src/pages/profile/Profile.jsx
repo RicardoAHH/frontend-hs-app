@@ -43,7 +43,8 @@ export default function Profile({ profileData: initialProfile }) {
 
     const handleListRoles = () => { navigate('/roles'); };
     const handleListServices = () => { navigate('/services'); };
-
+    const role = profileData.role.name;
+    const firstName = profileData.f_name
     if (!profileData) return <p className="p-6">Cargando perfil…</p>;
     const handleListUsers = () => {
         navigate('/users');
@@ -67,8 +68,10 @@ export default function Profile({ profileData: initialProfile }) {
                     >
                         Cerrar Sesión
                     </button>
-                    <div className="font-bold text-xl hidden md:block">
-                        Panel de Usuarios
+                    <div className="font-semibold m-auto text-md hidden md:block">
+                        <h2>Bienvenido<span className='ml-2'>{role}</span>
+                            <span className='ml-2'>{firstName}</span>
+                        </h2>
                     </div>
                     <div className='rounded-xl m-auto overflow-hidden mr-20'>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyK1XvWE2WeDczhjH9zb6FPq95eyxB3SUA-A&s" alt="funval" className="rounded-xl h-[40px] object-cover" />
