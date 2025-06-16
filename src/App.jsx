@@ -7,7 +7,7 @@ import Actualizar from './pages/profile/actualizar-perfil/Actualizar';
 import Usuarios from './pages/Usuarios/Usuarios';
 import ServicesPage from './pages/services/ServicesPage';
 import { profile } from './libs/axios/profile';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import UserDetailCard from './pages/Usuarios/UserDetailCard/UserDetailCard';
 import Crearusuario from './pages/Usuarios/Crearusuario';
 import Cambioclave from './pages/profile/actualizar-perfil/Cambioclave';
@@ -25,11 +25,11 @@ function App() {
         const { data, status } = await profile();
         if (status === 200) setProfileData(data);
       } catch (err) {
-         Si es 401, redirigimos a login
-       if (err.response?.status === 401) {
-         return navigate('/login');              
-       }
-       console.error('Error cargando perfil en App:', err);
+        //Si es 401, redirigimos a login
+        // if (err.response?.status === 401) {
+        //   return navigate('/login');
+        // }
+        console.error('Error cargando perfil en App:', err);
       }
     };
     fetchProfile();
@@ -40,7 +40,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/profile"
           element={
