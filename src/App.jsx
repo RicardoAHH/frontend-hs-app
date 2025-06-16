@@ -25,10 +25,10 @@ function App() {
         const { data, status } = await profile();
         if (status === 200) setProfileData(data);
       } catch (err) {
-         // Si es 401, redirigimos a login
-       // if (err.response?.status === 401) {
-       //   return navigate('/login');              
-       // }
+         Si es 401, redirigimos a login
+       if (err.response?.status === 401) {
+         return navigate('/login');              
+       }
        console.error('Error cargando perfil en App:', err);
       }
     };
