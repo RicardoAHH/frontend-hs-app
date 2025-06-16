@@ -26,9 +26,9 @@ function App() {
         if (status === 200) setProfileData(data);
       } catch (err) {
          // Si es 401, redirigimos a login
-       if (err.response?.status === 401) {
-         return navigate('/login');              
-       }
+       // if (err.response?.status === 401) {
+       //   return navigate('/login');              
+       // }
        console.error('Error cargando perfil en App:', err);
       }
     };
